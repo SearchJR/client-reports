@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Health Review – Sonia & Daniel Diestel-Feddersen | Search Mortgages</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #eb7f28;
+    --orange-light: #f5a45e;
+    --orange-dim: rgba(235,127,40,0.12);
+    --navy: #141e3e;
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --surface3: #252525;
+    --border: rgba(255,255,255,0.07);
+    --border-orange: rgba(235,127,40,0.3);
+    --text: #f0ece8;
+    --text-muted: rgba(240,236,232,0.55);
+    --text-dim: rgba(240,236,232,0.3);
+    --green: #4caf80;
+    --green-dim: rgba(76,175,128,0.12);
+    --red: #e05c5c;
+    --red-dim: rgba(224,92,92,0.12);
+    --amber: #f0b429;
+    --amber-dim: rgba(240,180,41,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { background: var(--bg); color: var(--text); font-family: 'Raleway', sans-serif; font-weight: 400; }
+  body { max-width: 900px; margin: 0 auto; }
+
+  /* HEADER */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-orange);
+    padding: 36px 48px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.15em;
+    font-weight: 300;
+    line-height: 1.1;
+  }
+  .logo-search { font-size: 28px; color: var(--orange); display: block; }
+  .logo-mortgages { font-size: 28px; color: var(--text); display: block; }
+  .header-right { text-align: right; }
+  .review-badge {
+    display: inline-block;
+    background: var(--orange-dim);
+    border: 1px solid var(--border-orange);
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+  }
+  .header-date { font-size: 12px; color: var(--text-muted); letter-spacing: 0.05em; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--surface) 0%, #111111 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(235,127,40,0.06) 0%, transparent 70%);
+  }
+  .client-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 42px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .client-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .stat-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 16px;
+  }
+  .stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat-value.orange { color: var(--orange); }
+  .stat-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 40px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .section-number {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--orange-dim);
+    border: 1px solid var(--border-orange);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--orange);
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--text);
+  }
+
+  /* RATE SECTION */
+  .rate-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .info-block {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .info-block-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .info-block-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .info-block-note { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+  .pill-amber { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(240,180,41,0.25); }
+  .pill-green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(76,175,128,0.25); }
+  .pill-red { background: var(--red-dim); color: var(--red); border: 1px solid rgba(224,92,92,0.25); }
+
+  .prose {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 680px;
+  }
+  .prose strong { color: var(--text); font-weight: 600; }
+  .prose .orange { color: var(--orange); }
+
+  /* MARKET COMPARISON */
+  .market-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  .market-table th {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-align: left;
+    padding: 0 0 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .market-table td {
+    padding: 13px 0;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .market-table td:last-child { text-align: right; }
+  .market-table th:last-child { text-align: right; }
+  .market-table .current-row td { color: var(--orange); }
+  .lender-name { font-weight: 500; color: var(--text); }
+  .rate-cell {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .rate-diff {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .diff-better { background: var(--green-dim); color: var(--green); }
+  .diff-worse { background: var(--red-dim); color: var(--red); }
+  .diff-same { background: var(--surface3); color: var(--text-muted); }
+
+  .comparison-note {
+    background: var(--surface2);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-top: 16px;
+  }
+  .comparison-note strong { color: var(--text); }
+
+  /* EQUITY SECTION */
+  .equity-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .equity-bar-wrap {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .equity-bar-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+  .bar-track {
+    height: 160px;
+    background: var(--surface3);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .bar-fill-loan {
+    background: var(--orange);
+    width: 100%;
+    transition: height 0.8s ease;
+  }
+  .bar-fill-usable {
+    background: var(--green);
+    opacity: 0.7;
+    width: 100%;
+  }
+  .bar-fill-buffer {
+    background: var(--surface3);
+    border: 1px solid var(--border);
+    width: 100%;
+  }
+  .bar-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .equity-numbers {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .equity-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .equity-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .equity-row-label { font-size: 12px; color: var(--text-muted); }
+  .equity-row-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .equity-row-value.green { color: var(--green); }
+  .equity-row-value.orange { color: var(--orange); }
+
+  /* REDRAW */
+  .redraw-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  /* PROPERTY LINK */
+  .property-link-card {
+    background: var(--orange-dim);
+    border: 1px solid var(--border-orange);
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .property-link-card:hover { background: rgba(235,127,40,0.18); }
+  .property-link-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+  .property-link-text { font-size: 14px; color: var(--text); font-weight: 500; }
+  .link-arrow {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* SUMMARY */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .action-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .action-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .action-icon.amber { background: var(--amber-dim); }
+  .action-icon.green { background: var(--green-dim); }
+  .action-icon.orange { background: var(--orange-dim); }
+  .action-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .action-body { font-size: 12px; line-height: 1.7; color: var(--text-muted); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border-orange);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--orange);
+    letter-spacing: 0.12em;
+  }
+  .footer-disc { font-size: 10px; color: var(--text-dim); max-width: 520px; line-height: 1.6; }
+
+  @media print {
+    body { background: #0d0d0d !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-text">
+    <span class="logo-search">SEARCH</span>
+    <span class="logo-mortgages">MORTGAGES</span>
+  </div>
+  <div class="header-right">
+    <div class="review-badge">Loan Health Review</div>
+    <div class="header-date">Review Date: 4 May 2026</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="client-name">Sonia &amp; Daniel Diestel-Feddersen</div>
+  <div class="client-sub">Owner-Occupied · Bank SA · Annual Loan Review</div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-label">Loan Balance</div>
+      <div class="stat-value">$132,991</div>
+      <div class="stat-note">Owner-Occupied</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Current Rate</div>
+      <div class="stat-value orange">6.14%</div>
+      <div class="stat-note">p.a. variable</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Monthly Repayment</div>
+      <div class="stat-value">$827</div>
+      <div class="stat-note">Principal &amp; Interest</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Funds in Redraw</div>
+      <div class="stat-value">$1,397</div>
+      <div class="stat-note">Available immediately</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: YOUR CURRENT RATE -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">1</div>
+    <div class="section-title">Your Current Rate &amp; Pricing</div>
+  </div>
+
+  <div class="rate-row">
+    <div class="info-block">
+      <div class="info-block-label">Your Rate with Bank SA</div>
+      <div class="info-block-value">6.14%</div>
+      <div class="info-block-note">Variable – Owner-Occupied P&amp;I</div>
+      <div class="status-pill pill-amber">Pricing reviewed 4 May 2026</div>
+    </div>
+    <div class="info-block">
+      <div class="info-block-label">Discount Result</div>
+      <div class="info-block-value" style="font-size:22px; padding-top:6px;">No discount available</div>
+      <div class="info-block-note">Bank SA has confirmed this is their best available rate for your loan profile at this time.</div>
+      <div class="status-pill pill-amber">Repricing completed</div>
+    </div>
+  </div>
+
+  <p class="prose">
+    We approached Bank SA on your behalf and requested a rate reduction. Unfortunately, <strong>no discount was available</strong> at this review — Bank SA's current pricing position is firm at <span class="orange">6.14%</span> for your loan type and balance. This is noted and we will revisit at the next scheduled review or if market conditions shift.
+  </p>
+</div>
+
+<!-- SECTION 3: EQUITY POSITION -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <div class="section-title">Your Equity Position</div>
+  </div>
+
+  <a class="property-link-card" href="https://u6522461.ct.sendgrid.net/ls/click?upn=u001.scJqBujo-2FWLssPxaUasr9WnwM0l74DEtEkFUs-2B-2BKBbxDg5QHd4GnNL9HyDcns9tVbWSxaecI8L8TvDRsKsp-2FQEcNgEwNyyvSbW2PJJOPkxo-2FhJTTu8tbwNOO5YSuCpf9FLesgHb8n9xGIPAOWyjBUO72Ki8WEjpfo8wI9lwQhyMmEykcgmOG-2FuhQw3QfXf53RpJ404LgO6N9ynm03iMl7GdQm-2BUkoMQ1zu7gRW90ziw-3Dx5Bv_eOMbwaONHyCvJAMzKRRFMgp7uV5oDBy5lzBhgijRtIxrMBDk54F4Hp-2FZ6pCDIeOlWgH4YlP4-2FwDFfgytqKXUKnKedsff08UyDJDOpVNdZ6don-2BmIN5L0mbW2BjfzZcEwPJPQCEQKCemZtrOjWqf02kBno-2FFn6hDg57YhKfeHC-2Ffo-2Fj2qVozy3PCftH9VOFy0zyMp5WmpIw7KVNlF7RJiJAQRzGu7wFrs15qvwztJC8h8NN7BsWl0-2FbCkDMXTdyuzTMb33aMR33RNKrDt-2FJJbOlTf8rmnvQeu7ZQYJNYs9As-3D" target="_blank">
+    <div>
+      <div class="property-link-label">RP Data — Property Report</div>
+      <div class="property-link-text">View your full property valuation report →</div>
+    </div>
+    <div class="link-arrow">↗</div>
+  </a>
+
+  <p class="prose" style="margin-bottom: 24px;">
+    Based on the current RP Data property report, the figures below illustrate your equity position on your land. <strong>Usable equity</strong> represents the amount you could potentially access without crossing the 80% LVR threshold — the point at which Lenders Mortgage Insurance (LMI) typically applies. Please note that as this is <strong>vacant land</strong>, lender policies on equity access may differ from a standard residential property and serviceability will be assessed accordingly.
+  </p>
+
+  <div class="equity-visual">
+    <div class="equity-bar-wrap">
+      <div class="equity-bar-label">Property Value Breakdown</div>
+      <!-- 
+        Property value: $230,000
+        Loan balance: $132,991 → 57.8% of value
+        80% threshold: $184,000
+        Usable equity: $184,000 - $132,991 = $51,009 → 22.2% of bar
+        Loan = 57.8% of bar
+        Protected (top 20%) = 20% of bar
+        Total check: 57.8 + 22.2 = 80% ✓
+      -->
+      <div style="position:relative; height:180px; background:var(--surface3); border-radius:6px; overflow:hidden;">
+        <div style="position:absolute; bottom:0; left:0; right:0; height:57.8%; background:var(--orange); display:flex; align-items:center; justify-content:center;">
+          <span style="font-size:10px; font-weight:600; color:white; letter-spacing:0.05em;">LOAN BALANCE</span>
+        </div>
+        <div style="position:absolute; bottom:57.8%; left:0; right:0; height:22.2%; background:var(--green); opacity:0.7; display:flex; align-items:center; justify-content:center;">
+          <span style="font-size:10px; font-weight:600; color:white; letter-spacing:0.05em;">USABLE EQUITY</span>
+        </div>
+        <div style="position:absolute; bottom:80%; left:0; right:0; height:20%; background:var(--surface3); border:1px solid var(--border); display:flex; align-items:center; justify-content:center;">
+          <span style="font-size:10px; color:var(--text-dim); letter-spacing:0.05em;">PROTECTED (20%)</span>
+        </div>
+        <div style="position:absolute; bottom:80%; left:0; right:0; height:1px; background:var(--amber); z-index:10;"></div>
+        <div style="position:absolute; bottom:81%; right:8px; font-size:9px; color:var(--amber); font-weight:600;">80% LVR</div>
+      </div>
+      <div class="bar-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div> Loan balance ($132,991)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Usable equity ($51,009)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--surface3); border:1px solid var(--border)"></div> Protected buffer (above 80% LVR)</div>
+      </div>
+    </div>
+
+    <div class="equity-numbers">
+      <div class="equity-row">
+        <div>
+          <div class="equity-row-label">Land Value (RP Data)</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:2px;">Vacant land — owner-occupied</div>
+        </div>
+        <div class="equity-row-value">$230,000</div>
+      </div>
+      <div class="equity-row">
+        <div>
+          <div class="equity-row-label">Current Loan Balance</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:2px;">Bank SA OO loan</div>
+        </div>
+        <div class="equity-row-value orange">$132,991</div>
+      </div>
+      <div class="equity-row">
+        <div>
+          <div class="equity-row-label">Current LVR</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:2px;">Loan ÷ property value</div>
+        </div>
+        <div class="equity-row-value" style="color:var(--amber)">57.8%</div>
+      </div>
+      <div class="equity-row">
+        <div>
+          <div class="equity-row-label">80% LVR Threshold</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:2px;">Maximum before LMI applies</div>
+        </div>
+        <div class="equity-row-value">$184,000</div>
+      </div>
+      <div class="equity-row">
+        <div>
+          <div class="equity-row-label">Usable Equity</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:2px;">(80% of value) minus loan balance</div>
+        </div>
+        <div class="equity-row-value green">$51,009</div>
+      </div>
+      <div class="equity-row" style="border-bottom:none; padding-bottom:0">
+        <div>
+          <div class="equity-row-label">Funds in Redraw</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:2px;">Available to access now</div>
+        </div>
+        <div class="equity-row-value">$1,397</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="prose">
+    Your land is valued at <strong>$230,000</strong> with a current LVR of <strong>57.8%</strong> — comfortably below the 80% threshold. This gives you <strong>$51,009 in usable equity</strong> should you wish to access it, for example to fund construction or other purposes. As this is vacant land, any equity release or construction loan would be subject to lender assessment at the time. Please refer to your RP Data report (linked above) for full valuation details.
+  </p>
+</div>
+
+<!-- SECTION 4: SUMMARY & NEXT STEPS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">3</div>
+    <div class="section-title">Summary &amp; Our Recommendations</div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="action-card">
+      <div class="action-icon amber">📊</div>
+      <div class="action-title">Rate: Hold &amp; Monitor</div>
+      <div class="action-body">Your rate of 6.14% is competitive against most major banks. The marginal savings from refinancing do not outweigh the switching costs at your current balance. We'll continue to monitor and act if a genuine opportunity arises.</div>
+    </div>
+    <div class="action-card">
+      <div class="action-icon green">🏠</div>
+      <div class="action-title">Equity: $51,009 Usable</div>
+      <div class="action-body">Your land is valued at $230,000 with a current LVR of 57.8%. You have $51,009 in usable equity below the 80% LVR mark. As vacant land, any equity access would be subject to lender assessment — worth discussing if you're planning to build.</div>
+    </div>
+    <div class="action-card">
+      <div class="action-icon orange">💰</div>
+      <div class="action-title">Redraw: $1,397 Available</div>
+      <div class="action-body">You have $1,397 sitting in redraw. This money is accessible at any time. Consider whether it's better deployed toward loan reduction, an offset buffer, or kept as an emergency reserve.</div>
+    </div>
+    <div class="action-card">
+      <div class="action-icon amber">📅</div>
+      <div class="action-title">Next Review</div>
+      <div class="action-body">We recommend reviewing again in 6–12 months or sooner if the RBA makes a significant rate move. We'll proactively reach out when an opportunity to improve your position arises.</div>
+    </div>
+  </div>
+
+  <div class="comparison-note">
+    <strong>Your broker is working for you.</strong> This review was completed proactively on your behalf. We approached Bank SA for a rate reduction, assessed the market for refinance options, and reviewed your equity position — all so you don't have to. You are in safe hands, and we will continue to keep a close eye on your position.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-brand" style="margin-bottom:10px;">SEARCH MORTGAGES</div>
+    <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:4px;">Ben Tucker — Director</div>
+    <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+      <a href="tel:0404336809" style="color:var(--text-muted); text-decoration:none;">0404 336 809</a><br>
+      <a href="mailto:ben@searchm.com.au" style="color:var(--orange); text-decoration:none;">ben@searchm.com.au</a>
+    </div>
+  </div>
+  <div class="footer-disc">This report is prepared for Sonia &amp; Daniel Diestel-Feddersen and is based on information current as at 4 May 2026. This is general information only and does not constitute financial advice. Please speak with your broker before making any decisions.</div>
+</div>
+
+</body>
+</html>
